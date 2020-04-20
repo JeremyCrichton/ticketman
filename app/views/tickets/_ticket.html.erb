@@ -1,4 +1,4 @@
-<div>
-  <h4><%= ticket.name %></h4>
-  <p><%= ticket.body %></p>
-</div>
+<tr>
+  <th scope="row"><%= link_to ticket.name, project_ticket_path(ticket[:id]) %></th> 
+  <td><%= ticket.status %></td>
+</tr>

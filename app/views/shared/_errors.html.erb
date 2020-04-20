@@ -1,0 +1,7 @@
+<% if obj.errors[field].any? %>
+  <ul>
+    <% obj.errors.full_messages_for(field).each do |message| %>
+      <li class="text-danger"><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>

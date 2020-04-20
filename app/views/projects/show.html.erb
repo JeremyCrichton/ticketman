@@ -1,7 +1,22 @@
-<h2><%= @project.name %></h2>
+<%= render 'shared/content_title', title: @project.name%>
+
 <p><%= @project.description %></p>
 
-<h3>Tickets</h3>
-<% @project.tickets.each do |ticket| %>
-  <%= render 'tickets/ticket', ticket: ticket %>
-<% end %>
+<%= link_to "Edit", edit_project_path(@project), class: "btn btn-outline-secondary btn-sm"%>
+<%= link_to "Delete", project_path(@project), method: :delete, class: "btn btn-outline-danger btn-sm"%>
+
+<h3 class="mt-4 h4">Tickets</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @project.tickets.each do |ticket| %>
+      <%= render 'tickets/ticket', ticket: ticket %>
+    <% end %>
+  </tbody>
+</table>
