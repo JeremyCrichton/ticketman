@@ -1,0 +1,7 @@
+<h2><%= @project.name %></h2>
+<p><%= @project.description %></p>
+
+<h3>Tickets</h3>
+<% @project.tickets.each do |ticket| %>
+  <%= render 'tickets/ticket', ticket: ticket %>
+<% end %>
