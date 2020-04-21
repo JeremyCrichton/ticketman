@@ -16,6 +16,7 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = Ticket.new(ticket_params)
+    @ticket.creator = current_user
 
     if @ticket.save
       redirect_to @ticket, notice: "Ticket was created."
@@ -30,6 +31,7 @@ class TicketsController < ApplicationController
 
   def update
     @projects = Project.all
+    byebug
     
     if @ticket.update(ticket_params)
       redirect_to @ticket, notice: "Ticket was updated."
