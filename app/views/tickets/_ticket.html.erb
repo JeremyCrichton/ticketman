@@ -1,4 +1,5 @@
 <tr>
   <th scope="row"><%= link_to ticket.name, ticket_path(ticket[:id]) %></th> 
   <td><%= ticket.status %></td>
+  <td><%= list_ticket_tags(ticket) %></td>
 </tr>

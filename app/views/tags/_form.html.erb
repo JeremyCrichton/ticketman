@@ -1,0 +1,8 @@
+<%= form_with(model: @tag, local: true) do |f| %>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %>
+    <%= render partial: 'shared/errors', locals: { obj: @tag, field: :name } %>
+  </div>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>

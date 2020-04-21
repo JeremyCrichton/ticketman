@@ -1,0 +1,10 @@
+<tr>
+  <th scope="row"><%= tag.name %></th>
+  <td><%= TicketTag.where(tag_id: tag.id).size %></td>
+  <td>
+    [<%= link_to "Edit", edit_tag_path(tag) %>] | 
+    [<%= link_to "Delete", tag_path(tag),
+    method: 'delete', 
+    data: {confirm: 'Are you sure' } %>]
+  </td>
+</tr>

@@ -30,7 +30,7 @@ class TicketsController < ApplicationController
 
   def update
     @projects = Project.all
-
+    
     if @ticket.update(ticket_params)
       redirect_to @ticket, notice: "Ticket was updated."
     else
@@ -51,6 +51,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:name, :body, :project_id, :status)
+    params.require(:ticket).permit(:name, :body, :project_id, :status, tag_ids: [])
   end
 end
