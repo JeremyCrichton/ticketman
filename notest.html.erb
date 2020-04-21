@@ -1,0 +1,5 @@
+<%= f.select :project_id, {}, {}, {class: 'form-control'} do %>
+  <% @projects.map { |project| [project.name, project.id] }.each do |p| %>
+    <%= content_tag(:option, p.first, value: p.last) %>
+  <% end %>
+<% end %>

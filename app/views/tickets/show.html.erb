@@ -1,0 +1,6 @@
+<%= render 'shared/content_title', title: @ticket.name%>
+
+<p><%= @ticket.body %></p>
+
+<%= link_to "Edit", edit_ticket_path(@ticket), class: "btn btn-outline-secondary btn-sm"%>
+<%= link_to "Delete", ticket_path(@ticket), method: :delete, class: "btn btn-outline-danger btn-sm"%>

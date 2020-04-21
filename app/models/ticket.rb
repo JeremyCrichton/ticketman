@@ -1,5 +1,7 @@
 class Ticket < ApplicationRecord
-  enum status: { created: 0, blocked: 1, in_progress: 2, fixed: 3 }
+  enum status:  [:created, :blocked, :in_progress, :fixed]
 
   belongs_to :project
+
+  validates :name, presence: true
 end
