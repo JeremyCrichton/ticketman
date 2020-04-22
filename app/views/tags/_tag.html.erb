@@ -1,12 +1,10 @@
 <tr>
   <th scope="row"><%= tag.name %></th>
-  <td><%= TicketTag.where(tag_id: tag.id).size %></td>
+  <td><%= link_to number_of_tickets_by_tag(tag.id), tickets_path(ticket_tag: tag.id) %></td>
   <% if logged_in? %>
     <td>
       [<%= link_to "Edit", edit_tag_path(tag) %>] | 
-      [<%= link_to "Delete", tag_path(tag),
-      method: 'delete', 
-      data: {confirm: 'Are you sure' } %>]
+      [<%= link_to "Delete", tag_path(tag), method: 'delete'%>]
     </td>
   <% end %>
 </tr>

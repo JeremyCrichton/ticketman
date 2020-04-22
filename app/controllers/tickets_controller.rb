@@ -3,21 +3,19 @@ class TicketsController < ApplicationController
   before_action :require_user, except: [:show, :index]
   
   def index
-    # @tickets = Ticket.all
-    @tickets
-    filter_by_project_id = params[:project_id] || ""
-    filter_by_status = params[:status] || ""
-    
-    if filter_by_project_id != "" && filter_by_status != ""
-      @tickets = Ticket.where(project_id: filter_by_project_id, status: filter_by_status)
-    elsif filter_by_project_id != ""
-      @tickets = Ticket.where(project_id: filter_by_project_id)
-    elsif filter_by_status != ""
-      @tickets = Ticket.where(status: filter_by_status)
-    else
-      @tickets = Ticket.all
+    filter_by_project_id = params[:project_id]
+    filter_by_status = params[:status]
+    filter_by_tag = params[:ticket_tag]
+
+    @tickets = filter_by_project_id.present? ? Ticket.where(project_id: filter_by_project_id) : Ticket.all
+
+    if filter_by_status.present?
+      @tickets = @tickets.where(status: filter_by_status)
     end
-    # byebug
+    
+    if filter_by_tag.present?
+      @tickets = @tickets.joins(:tags).where('tags.id': filter_by_tag)
+    end
   end
 
   def show

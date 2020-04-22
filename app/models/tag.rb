@@ -6,8 +6,6 @@ class Tag < ApplicationRecord
   validates_uniqueness_of :name, :case_sensitive => false
   validate :name_is_one_word
 
-  # before_save :downcase_fields
-
   def count_tag_by_name(name)
     Tag.where(name: tag.name).size
   end
