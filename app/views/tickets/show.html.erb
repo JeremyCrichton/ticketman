@@ -11,9 +11,8 @@
     <%= link_to "Edit", edit_ticket_path(@ticket), class: "btn btn-outline-secondary btn-sm"%>
     <%= link_to "Delete", ticket_path(@ticket), method: :delete, class: "btn btn-outline-danger btn-sm"%>
   </div>
-  
   <div class="mb-4">
-    <%= render 'comment_form'%>
+    <%= render 'comments/form'%>
   </div>
 <% end %>
 
@@ -29,7 +28,7 @@
   </thead>
   <tbody>
     <% @ticket.comments.each do |comment|%>
-      <%= render 'comment', comment: comment %>
+      <%= render 'comments/comment', comment: comment %>
     <% end %>
   </tbody>
 </table>

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   # Methods here available in all controllers
 
   # Make these helpers available to the views not just the controllers
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :is_creator?
 
   def current_user
     # ||= (memoization) - don't run if @current_user exists already in current view
@@ -13,10 +13,14 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def is_creator?(created_item)
+    current_user == created_item.creator
+  end
+
   def require_user
     if !logged_in?
       flash[:error] = "You must be logged in to do that."
-      redirect_to root_path
+      redirect_back fallback_location: root_path
     end
   end
 end
