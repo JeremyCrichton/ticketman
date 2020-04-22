@@ -5,12 +5,17 @@ class CommentsController < ApplicationController
   before_action :require_creator, only: [:edit, :update, :destroy]
 
   def create
+    # byebug
     comment_params = params.require(:comment).permit(:body)
     @comment = Comment.new(comment_params)
     @comment.creator = current_user
     @comment.ticket = @ticket
+    
+    if params[:ticket_status].present?
+      @ticket.status = params[:ticket_status]
+    end
 
-    if @comment.save
+    if @comment.save && @ticket.save
       redirect_to @ticket, notice: "Your comment was added."
     else
       render 'tickets/show'
@@ -27,7 +32,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @ticket, notice: "Your comment was updated."
     else
-      render :edit
+      render @ticket
     end
   end
 

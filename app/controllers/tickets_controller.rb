@@ -3,10 +3,11 @@ class TicketsController < ApplicationController
   before_action :require_user, except: [:show, :index]
   
   def index
+    # @tickets = Ticket.all
     @tickets
-    filter_by_project_id = params[:project_id]
-    filter_by_status = params[:status]
-
+    filter_by_project_id = params[:project_id] || ""
+    filter_by_status = params[:status] || ""
+    
     if filter_by_project_id != "" && filter_by_status != ""
       @tickets = Ticket.where(project_id: filter_by_project_id, status: filter_by_status)
     elsif filter_by_project_id != ""
@@ -16,6 +17,7 @@ class TicketsController < ApplicationController
     else
       @tickets = Ticket.all
     end
+    # byebug
   end
 
   def show

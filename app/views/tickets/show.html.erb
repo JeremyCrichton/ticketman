@@ -5,6 +5,7 @@
 <% if @ticket.assignee %>
   <p>Assigned to: <%= @ticket.assignee.name %></p>
 <% end %>
+<p>Status: <%= @ticket.status %></p>
 
 <% if logged_in? %>
   <div class="mb-4">
