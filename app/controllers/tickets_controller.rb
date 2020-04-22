@@ -18,6 +18,8 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     @ticket.creator = current_user
+    # @TODO Why can't I bring this one in directly from params
+    @ticket.assignee = User.find(params[:ticket][:assignee])
 
     if @ticket.save
       redirect_to @ticket, notice: "Ticket was created."

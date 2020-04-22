@@ -2,6 +2,7 @@
   <div class="form-group">
     <%= f.label :project_id %>
     <%= collection_select :ticket, :project_id, Project.all, :id, :name, {prompt: "Select a project"}, {class: "form-control"} %>
+    <%= render partial: 'shared/errors', locals: { obj: @ticket, field: :project_id } %>
   </div>
   
   <% if !@ticket.new_record? %>
@@ -10,6 +11,12 @@
       <%= f.collection_select :status, Ticket.statuses.map{ |a| [a.first, a.first] }, :first, :second, {}, {class: "form-control"} %>
     </div>
   <% end %>
+
+  <div class="form-group">
+    <%= f.label :assignee %>
+    <%= collection_select :ticket, :assignee, User.all, :id, :name, {prompt: "Select an assignee (optional)"}, {class: "form-control"} %>
+    <%= render partial: 'shared/errors', locals: { obj: @ticket, field: :assignee } %>
+  </div>
 
   <div class="form-group">
     <%= f.label :name %>
@@ -22,6 +29,7 @@
     <%= f.text_field :body, class: "form-control" %>
     <%= render partial: 'shared/errors', locals: { obj: @ticket, field: :body } %>
   </div>
+  
   <div class="form-group">
     <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |cb| %>
       <div class="form-check form-check-inline">
