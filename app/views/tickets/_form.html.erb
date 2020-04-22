@@ -14,7 +14,7 @@
 
   <div class="form-group">
     <%= f.label :assignee_id %>
-    <%= collection_select :ticket, :assignee_id, User.all, :id, :name, {prompt: "Select an assignee (optional)"}, {class: "form-control"} %>
+    <%= collection_select :ticket, :assignee_id, User.all, :id, :name, {include_blank: 'No one assigned'}, {class: "form-control"} %>
     <%= render partial: 'shared/errors', locals: { obj: @ticket, field: :assignee } %>
   </div>
 
