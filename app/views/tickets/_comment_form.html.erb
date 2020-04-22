@@ -1,0 +1,7 @@
+<%= form_with model: [@ticket, @comment], local: true do |f| %>
+  <div class="form-group">
+    <%= f.label :body, "Post comment" %>
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <%= f.submit class: "btn btn-primary"%>
+<% end %>

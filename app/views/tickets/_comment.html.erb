@@ -1,0 +1,8 @@
+<tr>
+  <td><%= comment.body %></td>
+  <td><%= comment.creator.name %></td>
+  <% if logged_in? && current_user == comment.creator %>
+    <td>[<%= link_to "edit", "", method: 'post' %>]</td>
+    <td>[<%= link_to "delete", "", method: 'delete' %>]</td>
+  <% end %>
+</tr>
