@@ -2,6 +2,7 @@
 
 <p><%= @ticket.body %></p>
 <p>Created by: <%= @ticket.creator.name %></p>
+<p>Assigned to: <%= @ticket.assignee.name %></p>
 
 <% if logged_in? %>
   <%= link_to "Edit", edit_ticket_path(@ticket), class: "btn btn-outline-secondary btn-sm"%>

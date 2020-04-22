@@ -13,8 +13,8 @@
   <% end %>
 
   <div class="form-group">
-    <%= f.label :assignee %>
-    <%= collection_select :ticket, :assignee, User.all, :id, :name, {prompt: "Select an assignee (optional)"}, {class: "form-control"} %>
+    <%= f.label :assignee_id %>
+    <%= collection_select :ticket, :assignee_id, User.all, :id, :name, {prompt: "Select an assignee (optional)"}, {class: "form-control"} %>
     <%= render partial: 'shared/errors', locals: { obj: @ticket, field: :assignee } %>
   </div>
 

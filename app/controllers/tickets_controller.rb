@@ -18,8 +18,6 @@ class TicketsController < ApplicationController
   def create
     @ticket = Ticket.new(ticket_params)
     @ticket.creator = current_user
-    # @TODO Why can't I bring this one in directly from params
-    @ticket.assignee = User.find(params[:ticket][:assignee])
 
     if @ticket.save
       redirect_to @ticket, notice: "Ticket was created."
@@ -34,7 +32,6 @@ class TicketsController < ApplicationController
 
   def update
     @projects = Project.all
-    byebug
     
     if @ticket.update(ticket_params)
       redirect_to @ticket, notice: "Ticket was updated."
@@ -56,6 +53,6 @@ class TicketsController < ApplicationController
   end
 
   def ticket_params
-    params.require(:ticket).permit(:name, :body, :project_id, :status, tag_ids: [])
+    params.require(:ticket).permit(:name, :body, :project_id, :status, :assignee_id, tag_ids: [])
   end
 end
