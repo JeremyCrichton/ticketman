@@ -31,7 +31,7 @@
   </div>
   
   <div class="form-group">
-    <%= f.collection_check_boxes :tag_ids, Tag.all, :id, :name do |cb| %>
+    <%= f.collection_check_boxes :tag_ids, Tag.all.order(:name), :id, :name do |cb| %>
       <div class="form-check form-check-inline">
         <%= cb.label(class: "form-check-label") {cb.check_box(class: "form-check-input") + cb.text} %>
       </div>

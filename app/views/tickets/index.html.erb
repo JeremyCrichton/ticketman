@@ -11,7 +11,7 @@
   </div>
   <div class="form-group">
     <%= label_tag :ticket_tag %>
-    <%= select_tag :ticket_tag, options_from_collection_for_select(Tag.all, :id, :name, params[:ticket_tag]), {prompt: "All tags", class: "form-control"}  %>
+    <%= select_tag :ticket_tag, options_from_collection_for_select(Tag.all.order(:name), :id, :name, params[:ticket_tag]), {prompt: "All tags", class: "form-control"}  %>
   </div>
   <%= submit_tag "Appy Filter", class: "btn btn-primary"%>
 <% end %>

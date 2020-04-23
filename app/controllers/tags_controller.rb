@@ -3,7 +3,7 @@ class TagsController < ApplicationController
   before_action :require_user, except: [:show, :index]
 
   def index
-    @tags = Tag.all
+    @tags = Tag.all.order(:name)
   end
 
   def new
