@@ -4,15 +4,21 @@
   <div class="form-group">
     <%= label_tag :project_id %>
     <%= select_tag :project_id, options_from_collection_for_select(Project.all, :id, :name, params[:project_id]), {prompt: "All projects", class: "form-control"}  %>
+  </div>
+  <div class="form-group">
     <%= label_tag :status %>
     <%= select_tag :status, options_for_select(Ticket.statuses, params[:status]), {prompt: "All statuses", class: "form-control"}  %>
+  </div>
+  <div class="form-group">
     <%= label_tag :ticket_tag %>
     <%= select_tag :ticket_tag, options_from_collection_for_select(Tag.all, :id, :name, params[:ticket_tag]), {prompt: "All tags", class: "form-control"}  %>
-
   </div>
   <%= submit_tag "Appy Filter", class: "btn btn-primary"%>
 <% end %>
 
+<% if no_items?(@tickets) %>
+  <h3 class="mt-4">No ticket left 😄</h3>
+<% else %>
 <table class="table mt-4">
   <thead>
     <tr>
@@ -30,3 +36,4 @@
     <% end %>
   </tbody>
 </table>
+<% end %>

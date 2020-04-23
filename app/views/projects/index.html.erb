@@ -1,5 +1,8 @@
 <%= render 'shared/content_title', title: 'Projects'%>
 
+<% if no_items?(@projects) %>
+  <h3 class="mt-4">No projects 🤨. <span><%= link_to "Create a new one?", new_project_path %><span></h3>
+<% else %>
 <table class="table">
   <thead>
     <tr>
@@ -14,3 +17,4 @@
     <% end %>
   </tbody>
 </table>
+<%end%>

@@ -1,5 +1,8 @@
 <%= render 'shared/content_title', title: "Tags"%>
 
+<% if no_items?(@tags) %>
+  <h3 class="mt-4">There are no tags 🤨. Why not <span><%= link_to "create a new one?", new_tag_path %><span></h3>
+<% else %>
 <table class="table">
   <thead>
     <tr>
@@ -14,3 +17,4 @@
     <% end %>
   </tbody>
 </table>
+<% end %>
