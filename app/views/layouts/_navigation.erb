@@ -1,10 +1,9 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light px-3">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <%= link_to "Ticketman", root_path, class: "navbar-brand" %>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-  <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item dropdown d-flex ml-2">
         <%= link_to "Projects", projects_path, class: "nav-link" %>
@@ -42,17 +41,19 @@
           </div>
         <% end %>
       </li>
-    </ul>
-    <% if logged_in? %>
-      <div>
+      <% if logged_in? %>
+      <li class="nav-item">
         <span>Hi <%= current_user[:name] %>!</span>
         <%= link_to "Logout", logout_path, class: "btn btn-sm btn-outline-primary ml-2" %>
-      </div>
+      </li>
     <% else %>
-      <div>
-        <%= link_to "Login", login_path, class: "btn btn-outline-secondary" %>
+      <li class="nav-item">
+        <%= link_to "Login", login_path, class: "btn btn-outline-secondary ml-2" %>
+      </li>
+      <li id="nav-btn-register" class="nav-item">
         <%= link_to "Register", register_path, class: "btn btn-outline-primary ml-2" %>
-      </div>
+      </li>
     <% end %>
+    </ul>
   </div>
 </nav>
